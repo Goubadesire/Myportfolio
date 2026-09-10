@@ -48,7 +48,7 @@ const HARDCODED_PROJECTS: Project[] = [
       "Application web de gestion de depense",
     techStack: ["Next.js", "React", "Supabase", "TypeScript", "Tailwind CSS"],
     githubUrl: "https://github.com/Goubadesire/finance.git",
-    demoUrl: "https://finance-git-main-goubadesires-projects.vercel.app/",
+    demoUrl: "https://finance-ten-drab.vercel.app",
     //imageUrl: "/velora.png", // Placer l'image dans public/projects/velora.png
   },
 ];
