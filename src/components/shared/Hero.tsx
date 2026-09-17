@@ -117,7 +117,7 @@ export default function Hero() {
 
             {/* Télécharger CV */}
             <a
-              href="/cv.pdf"
+              href="/cvGoubaDesire.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:text-emerald-600 dark:hover:text-emerald-400 bg-zinc-100/70 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/50 transition-all hover:border-emerald-500/40"
