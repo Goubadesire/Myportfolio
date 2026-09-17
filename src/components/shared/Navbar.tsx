@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Terminal, Menu, X } from "lucide-react";
+import Image from "next/image"; // 1. Import du composant Image de Next.js
+import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/shared/ThemeToggle";
-import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,16 +19,27 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 dark:bg-zinc-950/70 border-b border-zinc-200/60 dark:border-zinc-800/60 transition-all">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
         
-        {/* Logo avec Badge Actif */}
+        {/* Logo Image avec Badge Actif */}
         <Link 
           href="/" 
-          className="flex items-center gap-3 font-extrabold text-lg sm:text-xl text-zinc-900 dark:text-zinc-100 tracking-tight group"
+          className="flex items-center gap-3 group"
         >
-          <div className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 group-hover:scale-105 group-hover:bg-emerald-500/20 transition-all duration-300">
-            <Terminal className="w-5 h-5" />
+          {/* Conteneur du Logo Image */}
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm group-hover:border-emerald-500/50 transition-all duration-300">
+            <Image
+              src="/logo.png" // Assure-toi que ton image est bien dans le dossier public/ sous ce nom (ex: public/logo.png)
+              alt="Logo Désiré Gouba"
+              fill
+              sizes="(max-width: 68px) 40px, 44px"
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              priority
+            />
           </div>
+
           <div className="flex flex-col">
-            <span className="leading-none">Désiré Gouba</span>
+            <span className="font-extrabold text-base sm:text-lg text-zinc-900 dark:text-zinc-100 tracking-tight leading-none">
+              Désiré Gouba
+            </span>
             <div className="flex items-center gap-1.5 mt-1">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
