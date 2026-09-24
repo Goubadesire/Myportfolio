@@ -18,17 +18,16 @@ import {
   SiTailwindcss,
   SiGit,
   SiGithub,
-  SiLinux,
   SiPostman,
   SiMysql,
 } from "react-icons/si";
-
 import { VscCode } from "react-icons/vsc";
 
 interface SkillItem {
   name: string;
   icon: React.ElementType;
   color: string;
+  level: string;
 }
 
 interface SkillCategory {
@@ -42,43 +41,42 @@ const SKILL_CATEGORIES: SkillCategory[] = [
     title: "Backend & API",
     icon: Server,
     skills: [
-      { name: "Node.js", icon: SiNodedotjs, color: "text-emerald-500" },
-      { name: "NestJS", icon: SiNestjs, color: "text-red-500" },
-      { name: "Express", icon: SiExpress, color: "text-zinc-400" },
-      { name: "PHP", icon: SiPhp, color: "text-indigo-400" },
-      { name: "Laravel", icon: SiLaravel, color: "text-red-600" },
+      { name: "Node.js", icon: SiNodedotjs, color: "text-emerald-500", level: "Maîtrise" },
+      { name: "NestJS", icon: SiNestjs, color: "text-red-500", level: "Bon niveau" },
+      { name: "Express", icon: SiExpress, color: "text-zinc-400", level: "Bon niveau" },
+      { name: "PHP", icon: SiPhp, color: "text-indigo-400", level: "Bon niveau" },
+      { name: "Laravel", icon: SiLaravel, color: "text-red-600", level: "Bon niveau" },
     ],
   },
   {
     title: "Bases de données & ORM",
     icon: Database,
     skills: [
-      { name: "PostgreSQL", icon: SiPostgresql, color: "text-sky-500" },
-      { name: "SQLite", icon: SiSqlite, color: "text-blue-400" },
-      { name: "Mysql", icon: SiMysql, color: "text-blue-400" },
-      { name: "Prisma ORM", icon: SiPrisma, color: "text-teal-400" },
+      { name: "PostgreSQL", icon: SiPostgresql, color: "text-sky-500", level: "Maîtrise" },
+      { name: "SQLite", icon: SiSqlite, color: "text-blue-400", level: "Base solide" },
+      { name: "MySQL", icon: SiMysql, color: "text-blue-400", level: "Bon niveau" },
+      { name: "Prisma ORM", icon: SiPrisma, color: "text-teal-400", level: "Bon niveau" },
     ],
   },
   {
     title: "Frontend & Intégration",
     icon: Code2,
     skills: [
-      { name: "TypeScript", icon: SiTypescript, color: "text-blue-500" },
-      { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
-      { name: "React", icon: SiReact, color: "text-cyan-400" },
-      { name: "Next.js", icon: SiNextdotjs, color: "text-zinc-100" },
-      { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-500" },
+      { name: "TypeScript", icon: SiTypescript, color: "text-blue-500", level: "Maîtrise" },
+      { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400", level: "Maîtrise" },
+      { name: "React", icon: SiReact, color: "text-cyan-400", level: "Bon niveau" },
+      { name: "Next.js", icon: SiNextdotjs, color: "text-zinc-100", level: "Bon niveau" },
+      { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-500", level: "Maîtrise" },
     ],
   },
   {
     title: "Outils & Environnement",
     icon: Wrench,
     skills: [
-      { name: "Git", icon: SiGit, color: "text-orange-500" },
-      { name: "GitHub", icon: SiGithub, color: "text-zinc-200" },
-      //{ name: "Linux (Ubuntu)", icon: SiLinux, color: "text-amber-500" },
-      { name: "Postman", icon: SiPostman, color: "text-orange-600" },
-      { name: "VS Code", icon: VscCode, color: "text-blue-500" },
+      { name: "Git", icon: SiGit, color: "text-orange-500", level: "Maîtrise" },
+      { name: "GitHub", icon: SiGithub, color: "text-zinc-200", level: "Maîtrise" },
+      { name: "Postman", icon: SiPostman, color: "text-orange-600", level: "Bon niveau" },
+      { name: "VS Code", icon: VscCode, color: "text-blue-500", level: "Maîtrise" },
     ],
   },
 ];
@@ -99,7 +97,7 @@ export default function Skills() {
           Compétences <span className="bg-gradient-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent">Techniques</span>
         </h2>
         <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 mt-3 max-w-2xl font-normal leading-relaxed">
-          Technologies, frameworks et outils avec lesquels je développe au quotidien.
+          Un socle backend solide, associé à une bonne compréhension de l’intégration front et des outils de travail collaboratif.
         </p>
       </motion.div>
 
@@ -128,16 +126,18 @@ export default function Skills() {
                 {category.skills.map((skill) => {
                   const SkillIcon = skill.icon;
                   return (
-                    <motion.div
+                    <div
                       key={skill.name}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-xs hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-200 group"
+                      className="group min-w-[150px] rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2.5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-emerald-500/40"
                     >
-                      <SkillIcon className={`w-5 h-5 ${skill.color} transition-transform group-hover:scale-110`} />
-                      <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">
-                        {skill.name}
-                      </span>
-                    </motion.div>
+                      <div className="flex items-center gap-2.5">
+                        <SkillIcon className={`w-5 h-5 ${skill.color} transition-transform group-hover:scale-110`} />
+                        <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">{skill.name}</span>
+                      </div>
+                      <div className="mt-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-zinc-500 dark:text-zinc-400">
+                        {skill.level}
+                      </div>
+                    </div>
                   );
                 })}
               </div>
