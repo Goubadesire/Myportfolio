@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(ulid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Les projets sont maintenant écrits dans src/data/projects.ts.
+// La table est conservée pour ne pas créer de migration destructive ;
+// elle pourra être supprimée plus tard (après avoir relu le SQL).
+model Project {
+  id          String   @id @default(nanoid())
+  title       String
+  slug        String   @unique
+  description String
+  techStack   String[]
+  githubUrl   String?
+  demoUrl     String?
+  isFeatured  Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ContactMessage {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
